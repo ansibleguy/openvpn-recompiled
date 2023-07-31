@@ -2,37 +2,39 @@
 
 # see: https://github.com/marketplace/actions/upload-files-to-a-github-release
 
-name: Build
+name: Build and publish
 
 on:
-  push:
-    tags:
-      - '*'
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 jobs:
   build:
-    name: Publish binary
+    name: Build and publish binaries
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build dependencies
+    - name: Install build dependencies
       run: sudo apt-get install -y libssl-dev liblzo2-dev libpam0g-dev libcap-ng-dev liblz4-dev build-essential
 
-    - name: Build with --enable-iproute2
-      run: bash build.sh "${{ github.ref_name }}" "--enable-iproute2"
+    - name: Build debian/ubuntu binary with '--enable-iproute2'
+      run: bash scripts/build.sh "${{ inputs.version }}" "--enable-iproute2"
 
-    - name: Upload ubuntu binary
+    - name: Publish ubuntu binary
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        file: "/tmp/openvpn_${{ github.ref_name }}"
+        file: "/tmp/openvpn_${{ inputs.version }}"
         asset_name: 'openvpn-ubuntu+enable-iproute2'
         tag: "${{ github.ref }}"
         overwrite: true
 
-    - name: Upload debian binary
+    - name: Publish debian binary
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"

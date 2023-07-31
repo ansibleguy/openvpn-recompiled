@@ -1,0 +1,14 @@
+---
+
+name: Create new release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  new_release:
+    uses: .github/workflows/build.yml
+    with:
+      version: "${{ github.ref_name }}"

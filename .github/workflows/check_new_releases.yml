@@ -1,0 +1,45 @@
+---
+
+name: Check for new releases
+
+on:
+  schedule:
+    - cron: "10 20 * * *"
+
+jobs:
+  check:
+    name: Checking for new OpenVPN releases
+    runs-on: ubuntu-latest
+    outputs:
+      new_releases: ${{ steps.check_job.outputs.releases }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Check for new releases
+      run: python3 scripts/get_new_releases.py
+      id: check_job
+
+  release:
+    name: Creating missing releases
+    needs: [check]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        value: "${{ fromJson(needs.check.outputs.new_releases) }}"
+
+    steps:
+      - name: "Create Release ${{ matrix.value }}"
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          tag_name: "${{ matrix.value }}"
+          release_name: "${{ matrix.value }}"
+          draft: false
+          prerelease: false
+
+      - name: "Create Release ${{ matrix.value }}"
+        uses: .github/workflows/build.yml
+        with:
+          version: "${{ matrix.value }}"
