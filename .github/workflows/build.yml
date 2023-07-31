@@ -30,7 +30,7 @@ jobs:
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         file: "/tmp/openvpn_${{ inputs.version }}"
-        asset_name: 'openvpn-ubuntu+enable-iproute2'
+        asset_name: 'openvpn-x86_64-ubuntu+enable-iproute2'
         tag: "${{ github.ref }}"
         overwrite: true
 
@@ -39,6 +39,6 @@ jobs:
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         file: "/tmp/openvpn_${{ github.ref_name }}"
-        asset_name: 'openvpn-debian+enable-iproute2'
+        asset_name: 'openvpn-x86_64-debian+enable-iproute2'
         tag: "${{ github.ref }}"
         overwrite: true
