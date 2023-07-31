@@ -24,6 +24,7 @@ jobs:
 
     - name: Build debian/ubuntu binary with '--enable-iproute2'
       run: bash scripts/build.sh "${{ inputs.version }}" "--enable-iproute2"
+      shell: bash
 
     - name: Publish ubuntu binary
       uses: svenstaro/upload-release-action@v2

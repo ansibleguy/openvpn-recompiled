@@ -4,7 +4,7 @@ name: Check for new releases
 
 on:
   schedule:
-    - cron: '10 19 * * *'
+    - cron: '20 19 * * *'
 
 jobs:
   check:
@@ -17,13 +17,11 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Check for new releases
-      run: echo '::set-output name=json::$(python3 scripts/get_new_releases.py)'
+      run: |
+        releases=$(python3 scripts/get_new_releases.py)
+        echo "::set-output name=json::${releases}"
+      shell: bash
       id: check_job
-
-    - name: Showing new releases
-      run: echo $RELEASES
-      env:
-        RELEASES: "${{ fromJson(steps.check_job.outputs.json) }}"
 
   release:
     name: Creating missing releases
