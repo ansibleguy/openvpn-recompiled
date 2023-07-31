@@ -43,7 +43,7 @@ To verify this behavior, you can check out the [build job](https://github.com/an
 3. Move it
 
    ```bash
-   sudo mv openvpn-debian+enable-iproute2 /usr/sbin/openvpn
+   sudo mv openvpn-x86_64-debian+enable-iproute2 /usr/sbin/openvpn
    sudo chmod 755 /usr/sbin/openvpn
    sudo chown root:root /usr/sbin/openvpn
    ```
