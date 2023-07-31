@@ -28,33 +28,33 @@ To verify this behavior, you can check out the [build job](https://github.com/an
 
 1. Download the re-compiled binary
 
-  Version `2.6.5` in this example.
+   Version `2.6.5` in this example.
 
-  ```bash
-  wget https://github.com/ansibleguy/openvpn-recompiled/releases/download/2.6.5/openvpn-debian-ubuntu_enable-iproute2
-  ```
+   ```bash
+   wget https://github.com/ansibleguy/openvpn-recompiled/releases/download/2.6.5/openvpn-debian-ubuntu_enable-iproute2
+   ```
 
 2. Uninstall existing OpenVPN
 
-  ```bash
-  apt remove openvpn
-  ```
+   ```bash
+   apt remove openvpn
+   ```
 
 3. Move it
 
-  ```bash
-  mv openvpn-debian-ubuntu_enable-iproute2 /usr/sbin/openvpn
-  chmod +x /usr/sbin/openvpn
-  ```
+   ```bash
+   mv openvpn-debian-ubuntu_enable-iproute2 /usr/sbin/openvpn
+   chmod +x /usr/sbin/openvpn
+   ```
 
 4. Verify
 
-  ```bash
-  openvpn --version
-  > OpenVPN 2.6.5 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [MH/PKTINFO] [AEAD]
-  > library versions: OpenSSL 3.0.2 15 Mar 2022, LZO 2.10
-  > Originally developed by James Yonan
-  > Copyright (C) 2002-2023 OpenVPN Inc <sales@openvpn.net>
-  > Compile time defines: enable_async_push=no enable_comp_stub=no enable_crypto_ofb_cfb=yes enable_dco=no enable_dco_arg=auto enable_debug=yes enable_dlopen=unknown enable_dlopen_self=unknown enable_dlopen_self_static=unknown enable_fast_install=needless enable_fragment=yes enable_iproute2=yes enable_libtool_lock=yes enable_lz4=yes enable_lzo=yes enable_management=yes enable_pam_dlopen=no enable_pedantic=no enable_pkcs11=no enable_plugin_auth_pam=yes enable_plugin_down_root=yes enable_plugins=yes enable_port_share=yes enable_selinux=no enable_shared=yes enable_shared_with_static_runtimes=no enable_small=no enable_static=yes enable_strict=no enable_strict_options=no enable_systemd=no enable_werror=no enable_win32_dll=yes enable_wolfssl_options_h=yes enable_x509_alt_username=no with_aix_soname=aix with_crypto_library=openssl with_gnu_ld=yes with_mem_check=no with_openssl_engine=auto with_sysroot=no
-  ```
+   ```bash
+   openvpn --version
+   > OpenVPN 2.6.5 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [MH/PKTINFO] [AEAD]
+   > library versions: OpenSSL 3.0.2 15 Mar 2022, LZO 2.10
+   > Originally developed by James Yonan
+   > Copyright (C) 2002-2023 OpenVPN Inc <sales@openvpn.net>
+   > Compile time defines: enable_async_push=no enable_comp_stub=no enable_crypto_ofb_cfb=yes enable_dco=no enable_dco_arg=auto enable_debug=yes enable_dlopen=unknown enable_dlopen_self=unknown enable_dlopen_self_static=unknown enable_fast_install=needless enable_fragment=yes enable_iproute2=yes enable_libtool_lock=yes enable_lz4=yes enable_lzo=yes enable_management=yes enable_pam_dlopen=no enable_pedantic=no enable_pkcs11=no enable_plugin_auth_pam=yes enable_plugin_down_root=yes enable_plugins=yes enable_port_share=yes enable_selinux=no enable_shared=yes enable_shared_with_static_runtimes=no enable_small=no enable_static=yes enable_strict=no enable_strict_options=no enable_systemd=no enable_werror=no enable_win32_dll=yes enable_wolfssl_options_h=yes enable_x509_alt_username=no with_aix_soname=aix with_crypto_library=openssl with_gnu_ld=yes with_mem_check=no with_openssl_engine=auto with_sysroot=no
+   ```
 
