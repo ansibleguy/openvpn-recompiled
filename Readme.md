@@ -31,7 +31,7 @@ To verify this behavior, you can check out the [build job](https://github.com/an
    Version `2.6.5` in this example.
 
    ```bash
-   wget https://github.com/ansibleguy/openvpn-recompiled/releases/download/2.6.5/openvpn-debian-ubuntu_enable-iproute2
+   wget https://github.com/ansibleguy/openvpn-recompiled/releases/download/2.6.5/openvpn-x86_64-debian+enable-iproute2
    ```
 
 2. Uninstall existing OpenVPN
