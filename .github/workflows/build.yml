@@ -23,12 +23,20 @@ jobs:
     - name: Build with --enable-iproute2
       run: bash build.sh "${{ github.ref_name }}" "--enable-iproute2"
 
-    - name: Upload binaries to release
+    - name: Upload ubuntu binary
       uses: svenstaro/upload-release-action@v2
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: '/usr/local/sbin/openvpn'
-        asset_name: 'openvpn-debian-ubuntu_enable-iproute2'
-        tag: ${{ github.ref }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        file: "/tmp/openvpn_${{ github.ref_name }}"
+        asset_name: 'openvpn-ubuntu+enable-iproute2'
+        tag: "${{ github.ref }}"
         overwrite: true
-        body: "OpenVPN for Debian-based systems with '--enable-iproute2' set"
+
+    - name: Upload debian binary
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        file: "/tmp/openvpn_${{ github.ref_name }}"
+        asset_name: 'openvpn-debian+enable-iproute2'
+        tag: "${{ github.ref }}"
+        overwrite: true
