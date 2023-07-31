@@ -27,8 +27,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: /usr/local/sbin/openvpn
-        asset_name: mything
+        file: '/usr/local/sbin/openvpn'
+        asset_name: 'openvpn-debian-ubuntu_enable-iproute2'
         tag: ${{ github.ref }}
         overwrite: true
-        body: 'OpenVPN Debian-based'
+        body: "OpenVPN for Debian-based systems with '--enable-iproute2' set"
