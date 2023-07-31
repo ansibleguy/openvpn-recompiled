@@ -11,14 +11,19 @@ jobs:
     name: Checking for new OpenVPN releases
     runs-on: ubuntu-latest
     outputs:
-      releases: "${{ steps.check_job.outputs.releases }}"
+      releases: "${{ steps.check_job.outputs.json }}"
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Check for new releases
-      run: python3 scripts/get_new_releases.py >> $GITHUB_OUTPUT
+      run: echo '::set-output name=json::$(python3 scripts/get_new_releases.py)'
       id: check_job
+
+    - name: Showing new releases
+      run: echo $RELEASES
+      env:
+        RELEASES: "${{ fromJson(steps.check_job.outputs.json) }}"
 
   release:
     name: Creating missing releases
