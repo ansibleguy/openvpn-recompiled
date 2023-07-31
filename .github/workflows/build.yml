@@ -16,8 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Build dependencies
+      run: sudo apt-get install -y libssl-dev liblzo2-dev libpam0g-dev build-essential
+
     - name: Build with --enable-iproute2
-      run: sudo bash build.sh "${{ github.ref_name }}" "--enable-iproute2"
+      run: bash build.sh "${{ github.ref_name }}" "--enable-iproute2"
+
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
