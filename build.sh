@@ -13,7 +13,4 @@ cd "/tmp/openvpn-${VERSION}"
 # shellcheck disable=SC2086
 ./configure $FLAGS
 make
-
-ls -l "/tmp/openvpn-${VERSION}"
-ls -l "/tmp/openvpn-${VERSION}/build"
-cp openvpn /tmp
+sudo make install
