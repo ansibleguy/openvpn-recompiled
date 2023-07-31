@@ -43,8 +43,9 @@ To verify this behavior, you can check out the [build job](https://github.com/an
 3. Move it
 
    ```bash
-   mv openvpn-debian-ubuntu_enable-iproute2 /usr/sbin/openvpn
-   chmod +x /usr/sbin/openvpn
+   sudo mv openvpn-debian-ubuntu_enable-iproute2 /usr/sbin/openvpn
+   sudo chmod 755 /usr/sbin/openvpn
+   sudo chown root:root /usr/sbin/openvpn
    ```
 
 4. Verify
