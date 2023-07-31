@@ -11,13 +11,13 @@ jobs:
     name: Checking for new OpenVPN releases
     runs-on: ubuntu-latest
     outputs:
-      new_releases: ${{ steps.check_job.outputs.releases }}
+      releases: "${{ steps.check_job.outputs.releases }}"
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Check for new releases
-      run: python3 scripts/get_new_releases.py
+      run: python3 scripts/get_new_releases.py >> $GITHUB_OUTPUT
       id: check_job
 
   release:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value: "${{ fromJson(needs.check.outputs.new_releases) }}"
+        value: "${{ fromJson(needs.check.outputs.releases) }}"
 
     steps:
       - name: "Create Release ${{ matrix.value }}"

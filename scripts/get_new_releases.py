@@ -32,4 +32,4 @@ releases_ovpn = [release for release in releases_ovpn if _higher_version(release
 releases_ag =  [entry['name'] for entry in releases_ag_raw]
 releases_new = [release for release in releases_ovpn if release not in releases_ag]
 
-print("'::set-output name=releases::" + json_dumps(releases_new) + "'")
+print('releases=' + json_dumps(releases_new))
