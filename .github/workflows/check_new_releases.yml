@@ -40,6 +40,6 @@ jobs:
           prerelease: false
 
       - name: "Create Release ${{ matrix.value }}"
-        uses: .github/workflows/build.yml
+        uses: ./.github/workflows/build.yml
         with:
           version: "${{ matrix.value }}"

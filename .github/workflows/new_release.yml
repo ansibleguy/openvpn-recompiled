@@ -9,6 +9,6 @@ on:
 
 jobs:
   new_release:
-    uses: .github/workflows/build.yml
+    uses: ./.github/workflows/build.yml
     with:
       version: "${{ github.ref_name }}"
