@@ -19,7 +19,8 @@ jobs:
     - name: Check for new releases
       run: |
         releases=$(python3 scripts/get_new_releases.py)
-        echo "::set-output name=json::${releases}"
+        echo "RELEASES: '${releases}'"
+        echo "json=${releases}" >> $GITHUB_OUTPUT
       shell: bash
       id: check_job
 
@@ -41,8 +42,4 @@ jobs:
           release_name: "${{ matrix.value }}"
           draft: false
           prerelease: false
-
-      - name: "Create Release ${{ matrix.value }}"
-        uses: ./.github/workflows/build.yml
-        with:
-          version: "${{ matrix.value }}"
+          body: "Re-compiled OpenVPN binaries of <a href=https://github.com/OpenVPN/openvpn/releases/tag/v${{ matrix.value }}>version ${{ matrix.value }}</a>!"

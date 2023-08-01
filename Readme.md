@@ -10,7 +10,7 @@ But its default packages may lack some important features that can only be enabl
 This repository:
 * wants to provide re-compiled packages for those use-cases
 * focuses on server-side usage
-* currently only has support for debian-based systems
+* currently only has support for 64bit debian-based systems on x86_64 architecture
 
 If you would like to see another combinations of flags - [check out the options](https://github.com/ansibleguy/openvpn-recompiled/blob/main/Flags.md) and [create an issue](https://github.com/ansibleguy/openvpn-recompiled/issues)
 

@@ -5,11 +5,8 @@
 name: Build and publish
 
 on:
-  workflow_call:
-    inputs:
-      version:
-        required: true
-        type: string
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -23,17 +20,17 @@ jobs:
       run: sudo apt-get install -y libssl-dev liblzo2-dev libpam0g-dev libcap-ng-dev liblz4-dev build-essential
 
     - name: Build debian/ubuntu binary with '--enable-iproute2'
-      run: bash scripts/build.sh "${{ inputs.version }}" "--enable-iproute2"
+      run: bash scripts/build.sh "${{ github.ref_name }}" "--enable-iproute2"
       shell: bash
 
     - name: Publish ubuntu binary
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        file: "/tmp/openvpn_${{ inputs.version }}"
+        file: "/tmp/openvpn_${{ github.ref_name }}"
         asset_name: 'openvpn-x86_64-ubuntu+enable-iproute2'
         tag: "${{ github.ref }}"
-        overwrite: true
+        overwrite: false
 
     - name: Publish debian binary
       uses: svenstaro/upload-release-action@v2
@@ -42,4 +39,4 @@ jobs:
         file: "/tmp/openvpn_${{ github.ref_name }}"
         asset_name: 'openvpn-x86_64-debian+enable-iproute2'
         tag: "${{ github.ref }}"
-        overwrite: true
+        overwrite: false
