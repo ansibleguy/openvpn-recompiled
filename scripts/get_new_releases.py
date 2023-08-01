@@ -8,12 +8,12 @@ min_version = [2, 5, 0]
 api_ovpn = 'https://api.github.com/repos/openvpn/openvpn/tags'
 api_ag = 'https://api.github.com/repos/ansibleguy/openvpn-recompiled/releases'
 
-releases_ovpn_raw = json_loads(
-    request.urlopen(api_ovpn).read()
-)
-releases_ag_raw = json_loads(
-    request.urlopen(api_ag).read()
-)
+with request.urlopen(api_ovpn) as result:
+    releases_ovpn_raw = json_loads(result.read())
+
+with request.urlopen(api_ag) as result:
+    releases_ag_raw = json_loads(result.read())
+
 
 def _higher_version(release: str) -> bool:
     release = release.replace('v', '').split('.')
