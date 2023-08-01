@@ -4,7 +4,7 @@ name: Check for new releases
 
 on:
   schedule:
-    - cron: '50 14 * * *'
+    - cron: '42 21 * * *'
 
 jobs:
   check:
