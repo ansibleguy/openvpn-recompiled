@@ -22,7 +22,7 @@ We are:
 - pulling OpenVPN source-code directly from [swupdate.openvpn.org](https://swupdate.openvpn.org/community)
 - not modifying OpenVPN code
 
-To verify this behavior, you can check out the [build job](https://github.com/ansibleguy/openvpn-recompiled/blob/main/.github/workflows/build.yml) and [build script](https://github.com/ansibleguy/openvpn-recompiled/blob/main/build.sh).
+To verify this behavior, you can check out the [build job](https://github.com/ansibleguy/openvpn-recompiled/blob/main/.github/workflows/build.yml) and [build script](https://github.com/ansibleguy/openvpn-recompiled/blob/main/scripts/build.sh).
 
 ## Usage
 
