@@ -4,7 +4,7 @@ name: Check for new releases
 
 on:
   schedule:
-    - cron: '20 19 * * *'
+    - cron: '40 13 * * *'
 
 jobs:
   check:
@@ -42,4 +42,4 @@ jobs:
           release_name: "${{ matrix.value }}"
           draft: false
           prerelease: false
-          body: "Re-compiled OpenVPN binaries of <a href=https://github.com/OpenVPN/openvpn/releases/tag/v${{ matrix.value }}>version ${{ matrix.value }}</a>!"
+          body: "Re-compiled OpenVPN binaries of <a href=https://github.com/OpenVPN/openvpn/releases/tag/v${{ matrix.value }}>version ${{ matrix.value }}</a>"
