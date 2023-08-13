@@ -27,6 +27,7 @@ jobs:
   release:
     name: Creating missing releases
     needs: [check]
+    if: "${{ needs.check.outputs.releases != '[]' }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
